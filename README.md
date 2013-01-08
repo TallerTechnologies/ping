@@ -15,4 +15,7 @@ script:
 
     $ manage syncdb
 
+It'll probably require you to set a `DATABASE_URL` environment variable
+
+    $ export DATABASE_URL=sqlite:///partidos.db
 

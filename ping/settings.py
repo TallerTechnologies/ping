@@ -80,7 +80,15 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.app_directories.Loader',
 #     'django.template.loaders.eggs.Loader',
 )
-
+AUTHENTICATION_BACKENDS = (
+    'django_openid_auth.auth.OpenIDBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+OPENID_CREATE_USERS = True
+OPENID_UPDATE_DETAILS_FROM_SREG = True
+OPENID_SSO_SERVER_URL = 'https://www.google.com/accounts/o8/site-xrds?hd=tallertechnologies.com'
+LOGIN_URL = '/openid/login/'
+LOGIN_REDIRECT_URL = '/'
 MIDDLEWARE_CLASSES = (
     'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -121,6 +129,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
+    'django_openid_auth',
     'debug_toolbar',
     'ping',
     'south'
@@ -156,7 +165,9 @@ LOGGING = {
 }
 
 INTERNAL_IPS = ('127.0.0.1',)
-
+DEBUG_TOOLBAR_CONFIG = {
+    "INTERCEPT_REDIRECTS": False
+}
 try:
     from local_settings import *
 except ImportError:

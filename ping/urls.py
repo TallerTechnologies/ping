@@ -6,7 +6,7 @@ from django.conf.urls import patterns, include, url
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'ping.views.home', name='home'),
+    url(r'^$', 'ping.views.home', name='home'),
     # url(r'^ping/', include('ping.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
@@ -14,4 +14,5 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
+    (r'^openid/', include('django_openid_auth.urls')),
 )
